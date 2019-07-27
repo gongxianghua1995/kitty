@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.louis.kitty.admin.dao.CompanyCustomerMapper">
+
+  <resultMap id="BaseResultMap" type="com.louis.kitty.admin.model.CompanyCustomer">
+	<id column="id" jdbcType="BIGINT" property="id" />
+	<result column="c_name" jdbcType="VARCHAR" property="cName" />
+	<result column="c_tel" jdbcType="VARCHAR" property="cTel" />
+	<result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate" />
+	<result column="c_leader" jdbcType="VARCHAR" property="cLeader" />
+	<result column="c_deal_status" jdbcType="VARCHAR" property="cDealStatus" />
+	<result column="gmt_modified" jdbcType="TIMESTAMP" property="gmtModified" />
+	<result column="c_profession" jdbcType="VARCHAR" property="cProfession" />
+	<result column="c_level" jdbcType="VARCHAR" property="cLevel" />
+  </resultMap>
+  
+  <insert id="add" parameterType="com.louis.kitty.admin.model.CompanyCustomer">
+    insert into company_customer
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="cName != null">
+        c_name,
+      </if>
+      <if test="cTel != null">
+        c_tel,
+      </if>
+      <if test="gmtCreate != null">
+        gmt_create,
+      </if>
+      <if test="cLeader != null">
+        c_leader,
+      </if>
+      <if test="cDealStatus != null">
+        c_deal_status,
+      </if>
+      <if test="gmtModified != null">
+        gmt_modified,
+      </if>
+      <if test="cProfession != null">
+        c_profession,
+      </if>
+      <if test="cLevel != null">
+        c_level,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="cName != null">
+        #{cName,jdbcType=VARCHAR},
+      </if>
+      <if test="cTel != null">
+        #{cTel,jdbcType=VARCHAR},
+      </if>
+      <if test="gmtCreate != null">
+        #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="cLeader != null">
+        #{cLeader,jdbcType=VARCHAR},
+      </if>
+      <if test="cDealStatus != null">
+        #{cDealStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="gmtModified != null">
+        #{gmtModified,jdbcType=TIMESTAMP},
+      </if>
+      <if test="cProfession != null">
+        #{cProfession,jdbcType=VARCHAR},
+      </if>
+      <if test="cLevel != null">
+        #{cLevel,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+
+  <delete id="delete" parameterType="java.lang.Long">
+    delete from company_customer
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  
+  <update id="update" parameterType="com.louis.kitty.admin.model.CompanyCustomer">
+    update company_customer
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=BIGINT},
+      </if>
+      <if test="cName != null">
+        c_name = #{cName,jdbcType=VARCHAR},
+      </if>
+      <if test="cTel != null">
+        c_tel = #{cTel,jdbcType=VARCHAR},
+      </if>
+      <if test="gmtCreate != null">
+        gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="cLeader != null">
+        c_leader = #{cLeader,jdbcType=VARCHAR},
+      </if>
+      <if test="cDealStatus != null">
+        c_deal_status = #{cDealStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="gmtModified != null">
+        gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
+      </if>
+      <if test="cProfession != null">
+        c_profession = #{cProfession,jdbcType=VARCHAR},
+      </if>
+      <if test="cLevel != null">
+        c_level = #{cLevel,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+
+  <select id="findById" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select * from company_customer
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  
+  <select id="findPage" resultMap="BaseResultMap">
+    select * from company_customer
+  </select>
+  
+</mapper>

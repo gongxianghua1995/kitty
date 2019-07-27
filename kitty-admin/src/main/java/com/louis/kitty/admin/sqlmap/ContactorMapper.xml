@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.louis.kitty.admin.dao.ContactorMapper">
+
+  <resultMap id="BaseResultMap" type="com.louis.kitty.admin.model.Contactor">
+	<id column="id" jdbcType="BIGINT" property="id" />
+	<result column="con_name" jdbcType="VARCHAR" property="conName" />
+	<result column="con_creater" jdbcType="VARCHAR" property="conCreater" />
+	<result column="gmt_modified" jdbcType="TIMESTAMP" property="gmtModified" />
+	<result column="con_mail" jdbcType="VARCHAR" property="conMail" />
+	<result column="con_tel" jdbcType="VARCHAR" property="conTel" />
+	<result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate" />
+	<result column="con_leader" jdbcType="VARCHAR" property="conLeader" />
+	<result column="customer_name" jdbcType="VARCHAR" property="customerName" />
+	<result column="con_job" jdbcType="VARCHAR" property="conJob" />
+	<result column="con_sex" jdbcType="VARCHAR" property="conSex" />
+	<result column="con_address" jdbcType="VARCHAR" property="conAddress" />
+  </resultMap>
+  
+  <insert id="add" parameterType="com.louis.kitty.admin.model.Contactor">
+    insert into contactor
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="conName != null">
+        con_name,
+      </if>
+      <if test="conCreater != null">
+        con_creater,
+      </if>
+      <if test="gmtModified != null">
+        gmt_modified,
+      </if>
+      <if test="conMail != null">
+        con_mail,
+      </if>
+      <if test="conTel != null">
+        con_tel,
+      </if>
+      <if test="gmtCreate != null">
+        gmt_create,
+      </if>
+      <if test="conLeader != null">
+        con_leader,
+      </if>
+      <if test="customerName != null">
+        customer_name,
+      </if>
+      <if test="conJob != null">
+        con_job,
+      </if>
+      <if test="conSex != null">
+        con_sex,
+      </if>
+      <if test="conAddress != null">
+        con_address,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="conName != null">
+        #{conName,jdbcType=VARCHAR},
+      </if>
+      <if test="conCreater != null">
+        #{conCreater,jdbcType=VARCHAR},
+      </if>
+      <if test="gmtModified != null">
+        #{gmtModified,jdbcType=TIMESTAMP},
+      </if>
+      <if test="conMail != null">
+        #{conMail,jdbcType=VARCHAR},
+      </if>
+      <if test="conTel != null">
+        #{conTel,jdbcType=VARCHAR},
+      </if>
+      <if test="gmtCreate != null">
+        #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="conLeader != null">
+        #{conLeader,jdbcType=VARCHAR},
+      </if>
+      <if test="customerName != null">
+        #{customerName,jdbcType=VARCHAR},
+      </if>
+      <if test="conJob != null">
+        #{conJob,jdbcType=VARCHAR},
+      </if>
+      <if test="conSex != null">
+        #{conSex,jdbcType=VARCHAR},
+      </if>
+      <if test="conAddress != null">
+        #{conAddress,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+
+  <delete id="delete" parameterType="java.lang.Long">
+    delete from contactor
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  
+  <update id="update" parameterType="com.louis.kitty.admin.model.Contactor">
+    update contactor
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=BIGINT},
+      </if>
+      <if test="conName != null">
+        con_name = #{conName,jdbcType=VARCHAR},
+      </if>
+      <if test="conCreater != null">
+        con_creater = #{conCreater,jdbcType=VARCHAR},
+      </if>
+      <if test="gmtModified != null">
+        gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
+      </if>
+      <if test="conMail != null">
+        con_mail = #{conMail,jdbcType=VARCHAR},
+      </if>
+      <if test="conTel != null">
+        con_tel = #{conTel,jdbcType=VARCHAR},
+      </if>
+      <if test="gmtCreate != null">
+        gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="conLeader != null">
+        con_leader = #{conLeader,jdbcType=VARCHAR},
+      </if>
+      <if test="customerName != null">
+        customer_name = #{customerName,jdbcType=VARCHAR},
+      </if>
+      <if test="conJob != null">
+        con_job = #{conJob,jdbcType=VARCHAR},
+      </if>
+      <if test="conSex != null">
+        con_sex = #{conSex,jdbcType=VARCHAR},
+      </if>
+      <if test="conAddress != null">
+        con_address = #{conAddress,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+
+  <select id="findById" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select * from contactor
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  
+  <select id="findPage" resultMap="BaseResultMap">
+    select * from contactor
+  </select>
+  
+</mapper>

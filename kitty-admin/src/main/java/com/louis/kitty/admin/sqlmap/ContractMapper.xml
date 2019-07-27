@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.louis.kitty.admin.dao.ContractMapper">
+
+  <resultMap id="BaseResultMap" type="com.louis.kitty.admin.model.Contract">
+	<id column="id" jdbcType="BIGINT" property="id" />
+	<result column="contract_name" jdbcType="VARCHAR" property="contractName" />
+	<result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate" />
+	<result column="gmt_modified" jdbcType="TIMESTAMP" property="gmtModified" />
+	<result column="contract_start_time" jdbcType="TIMESTAMP" property="contractStartTime" />
+	<result column="contract_number" jdbcType="VARCHAR" property="contractNumber" />
+	<result column="customer_name" jdbcType="VARCHAR" property="customerName" />
+	<result column="contract_end_time" jdbcType="TIMESTAMP" property="contractEndTime" />
+	<result column="customer_signatory" jdbcType="VARCHAR" property="customerSignatory" />
+	<result column="contract_amount" jdbcType="FLOAT" property="contractAmount" />
+	<result column="contract_creator" jdbcType="VARCHAR" property="contractCreator" />
+	<result column="order_time" jdbcType="TIMESTAMP" property="orderTime" />
+	<result column="company_signatory" jdbcType="VARCHAR" property="companySignatory" />
+	<result column="contract_status" jdbcType="VARCHAR" property="contractStatus" />
+  </resultMap>
+  
+  <insert id="add" parameterType="com.louis.kitty.admin.model.Contract">
+    insert into contract
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="contractName != null">
+        contract_name,
+      </if>
+      <if test="gmtCreate != null">
+        gmt_create,
+      </if>
+      <if test="gmtModified != null">
+        gmt_modified,
+      </if>
+      <if test="contractStartTime != null">
+        contract_start_time,
+      </if>
+      <if test="contractNumber != null">
+        contract_number,
+      </if>
+      <if test="customerName != null">
+        customer_name,
+      </if>
+      <if test="contractEndTime != null">
+        contract_end_time,
+      </if>
+      <if test="customerSignatory != null">
+        customer_signatory,
+      </if>
+      <if test="contractAmount != null">
+        contract_amount,
+      </if>
+      <if test="contractCreator != null">
+        contract_creator,
+      </if>
+      <if test="orderTime != null">
+        order_time,
+      </if>
+      <if test="companySignatory != null">
+        company_signatory,
+      </if>
+      <if test="contractStatus != null">
+        contract_status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="contractName != null">
+        #{contractName,jdbcType=VARCHAR},
+      </if>
+      <if test="gmtCreate != null">
+        #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModified != null">
+        #{gmtModified,jdbcType=TIMESTAMP},
+      </if>
+      <if test="contractStartTime != null">
+        #{contractStartTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="contractNumber != null">
+        #{contractNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="customerName != null">
+        #{customerName,jdbcType=VARCHAR},
+      </if>
+      <if test="contractEndTime != null">
+        #{contractEndTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="customerSignatory != null">
+        #{customerSignatory,jdbcType=VARCHAR},
+      </if>
+      <if test="contractAmount != null">
+        #{contractAmount,jdbcType=FLOAT},
+      </if>
+      <if test="contractCreator != null">
+        #{contractCreator,jdbcType=VARCHAR},
+      </if>
+      <if test="orderTime != null">
+        #{orderTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="companySignatory != null">
+        #{companySignatory,jdbcType=VARCHAR},
+      </if>
+      <if test="contractStatus != null">
+        #{contractStatus,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+
+  <delete id="delete" parameterType="java.lang.Long">
+    delete from contract
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  
+  <update id="update" parameterType="com.louis.kitty.admin.model.Contract">
+    update contract
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=BIGINT},
+      </if>
+      <if test="contractName != null">
+        contract_name = #{contractName,jdbcType=VARCHAR},
+      </if>
+      <if test="gmtCreate != null">
+        gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModified != null">
+        gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
+      </if>
+      <if test="contractStartTime != null">
+        contract_start_time = #{contractStartTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="contractNumber != null">
+        contract_number = #{contractNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="customerName != null">
+        customer_name = #{customerName,jdbcType=VARCHAR},
+      </if>
+      <if test="contractEndTime != null">
+        contract_end_time = #{contractEndTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="customerSignatory != null">
+        customer_signatory = #{customerSignatory,jdbcType=VARCHAR},
+      </if>
+      <if test="contractAmount != null">
+        contract_amount = #{contractAmount,jdbcType=FLOAT},
+      </if>
+      <if test="contractCreator != null">
+        contract_creator = #{contractCreator,jdbcType=VARCHAR},
+      </if>
+      <if test="orderTime != null">
+        order_time = #{orderTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="companySignatory != null">
+        company_signatory = #{companySignatory,jdbcType=VARCHAR},
+      </if>
+      <if test="contractStatus != null">
+        contract_status = #{contractStatus,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+
+  <select id="findById" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select * from contract
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  
+  <select id="findPage" resultMap="BaseResultMap">
+    select * from contract
+  </select>
+  
+</mapper>
