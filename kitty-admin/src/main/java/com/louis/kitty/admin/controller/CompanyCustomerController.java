@@ -38,7 +38,7 @@ public class CompanyCustomerController {
 	 * @param record
 	 * @return
 	 */
-	@PreAuthorize("hasAuthority('sys:customer:add') AND hasAuthority('sys:customer:edit')")
+//	@PreAuthorize("hasAuthority('sys:customer:add') AND hasAuthority('sys:customer:edit')")
 	@PostMapping(value="/save")
 	public HttpResult save(@RequestBody CompanyCustomer record) {
 		return HttpResult.ok(companyCustomerService.save(record));
@@ -49,7 +49,7 @@ public class CompanyCustomerController {
      * @param records
      * @return
      */
-	@PreAuthorize("hasAuthority('sys:customer:delete')")
+//	@PreAuthorize("hasAuthority('sys:customer:delete')")
 	@PostMapping(value="/delete")
 	public HttpResult delete(@RequestBody List<CompanyCustomer> records) {
 		return HttpResult.ok(companyCustomerService.delete(records));
@@ -60,7 +60,7 @@ public class CompanyCustomerController {
      * @param pageRequest
      * @return
      */
-	@PreAuthorize("hasAuthority('sys:customer:view')")
+//	@PreAuthorize("hasAuthority('sys:customer:view')")
 	@PostMapping(value="/findPage")
 	public HttpResult findPage(@RequestBody PageRequest pageRequest) {
 		return HttpResult.ok(companyCustomerService.findPage(pageRequest));
@@ -71,7 +71,7 @@ public class CompanyCustomerController {
      * @param id
      * @return
      */
-	@PreAuthorize("hasAuthority('sys:customer:view')")
+//	@PreAuthorize("hasAuthority('sys:customer:view')")
 	@GetMapping(value="/findById")
 	public HttpResult findById(@RequestParam Long id) {
 		return HttpResult.ok(companyCustomerService.findById(id));

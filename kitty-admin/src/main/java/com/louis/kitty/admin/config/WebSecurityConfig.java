@@ -44,11 +44,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     		// 跨域预检请求
             .antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
 //            // customer
-//            .antMatchers("/companyCustomer/**").permitAll()
+            .antMatchers("/companyCustomer/**").permitAll()
 //            // contractor
-//            .antMatchers("/contactor/**").permitAll()
+            .antMatchers("/contactor/**").permitAll()
 //            // contract
-//            .antMatchers("/contract/**").permitAll()
+            .antMatchers("/contract/**").permitAll()
             // web jars
             .antMatchers("/webjars/**").permitAll()
             // 查看SQL监控（druid）

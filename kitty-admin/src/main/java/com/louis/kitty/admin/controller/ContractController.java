@@ -38,7 +38,7 @@ public class ContractController {
 	 * @param record
 	 * @return
 	 */
-	@PreAuthorize("hasAuthority('sys:contract:add') AND hasAuthority('sys:contract:edit')")
+//	@PreAuthorize("hasAuthority('sys:contract:add') AND hasAuthority('sys:contract:edit')")
 	@PostMapping(value="/save")
 	public HttpResult save(@RequestBody Contract record) {
 		return HttpResult.ok(contractService.save(record));
@@ -49,7 +49,7 @@ public class ContractController {
      * @param records
      * @return
      */
-	@PreAuthorize("hasAuthority('sys:contactor:delete')")
+//	@PreAuthorize("hasAuthority('sys:contactor:delete')")
 	@PostMapping(value="/delete")
 	public HttpResult delete(@RequestBody List<Contract> records) {
 		return HttpResult.ok(contractService.delete(records));
@@ -60,7 +60,7 @@ public class ContractController {
      * @param pageRequest
      * @return
      */
-	@PreAuthorize("hasAuthority('sys:contract:view')")
+//	@PreAuthorize("hasAuthority('sys:contract:view')")
 	@PostMapping(value="/findPage")
 	public HttpResult findPage(@RequestBody PageRequest pageRequest) {
 		return HttpResult.ok(contractService.findPage(pageRequest));
@@ -71,7 +71,7 @@ public class ContractController {
      * @param id
      * @return
      */
-	@PreAuthorize("hasAuthority('sys:contract:view')")
+//	@PreAuthorize("hasAuthority('sys:contract:view')")
 	@GetMapping(value="/findById")
 	public HttpResult findById(@RequestParam Long id) {
 		return HttpResult.ok(contractService.findById(id));
