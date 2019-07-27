@@ -1,6 +1,8 @@
 package com.louis.kitty.admin.dao;
 
+import com.louis.kitty.admin.model.CompanyCustomer;
 import com.louis.kitty.admin.model.Contract;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -49,5 +51,7 @@ public interface ContractMapper {
      * @return
      */    
     List<Contract> findPage();
+
+    List<Contract> findPageByName(@Param(value="name") String name);
     
 }

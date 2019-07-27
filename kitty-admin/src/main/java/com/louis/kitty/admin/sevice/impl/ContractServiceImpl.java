@@ -56,7 +56,16 @@ public class ContractServiceImpl implements ContractService {
 
 	@Override
 	public PageResult findPage(PageRequest pageRequest) {
-		return MybatisPageHelper.findPage(pageRequest, contractMapper);
+		PageResult pageResult = null;
+		String name = SysUserServiceImpl.getColumnFilterValue(pageRequest, "name");
+		if(name != null) {
+			if(name != null) {
+				pageResult = MybatisPageHelper.findPage(pageRequest, contractMapper, "findPageByName", name);
+			}
+		} else {
+			pageResult = MybatisPageHelper.findPage(pageRequest, contractMapper);
+		}
+		return pageResult;
 	}
 	
 }

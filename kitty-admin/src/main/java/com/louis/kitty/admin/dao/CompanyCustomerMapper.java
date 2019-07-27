@@ -1,6 +1,8 @@
 package com.louis.kitty.admin.dao;
 
 import com.louis.kitty.admin.model.CompanyCustomer;
+import com.louis.kitty.admin.model.SysUser;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -46,9 +48,11 @@ public interface CompanyCustomerMapper {
 
     /**
      * 基础分页查询
-     * @param record
+     * @param
      * @return
      */    
     List<CompanyCustomer> findPage();
+
+    List<CompanyCustomer> findPageByName(@Param(value="name") String name);
     
 }

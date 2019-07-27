@@ -1,6 +1,8 @@
 package com.louis.kitty.admin.dao;
 
+import com.louis.kitty.admin.model.CompanyCustomer;
 import com.louis.kitty.admin.model.Contactor;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -50,5 +52,7 @@ public interface ContactorMapper {
      * @return
      */    
     List<Contactor> findPage();
+
+    List<Contactor> findPageByName(@Param(value="name") String name);
     
 }

@@ -56,7 +56,17 @@ public class CompanyCustomerServiceImpl implements CompanyCustomerService {
 
 	@Override
 	public PageResult findPage(PageRequest pageRequest) {
-		return MybatisPageHelper.findPage(pageRequest, companyCustomerMapper);
+
+		PageResult pageResult = null;
+		String name = SysUserServiceImpl.getColumnFilterValue(pageRequest, "name");
+		if(name != null) {
+			if(name != null) {
+				pageResult = MybatisPageHelper.findPage(pageRequest, companyCustomerMapper, "findPageByName", name);
+			}
+		} else {
+			pageResult = MybatisPageHelper.findPage(pageRequest, companyCustomerMapper);
+		}
+		return pageResult;
 	}
 	
 }

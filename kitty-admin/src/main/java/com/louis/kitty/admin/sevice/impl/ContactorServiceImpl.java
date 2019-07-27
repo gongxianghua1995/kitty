@@ -57,7 +57,16 @@ public class ContactorServiceImpl implements ContactorService {
 
 	@Override
 	public PageResult findPage(PageRequest pageRequest) {
-		return MybatisPageHelper.findPage(pageRequest, contactorMapper);
+		PageResult pageResult = null;
+		String name = SysUserServiceImpl.getColumnFilterValue(pageRequest, "name");
+		if(name != null) {
+			if(name != null) {
+				pageResult = MybatisPageHelper.findPage(pageRequest, contactorMapper, "findPageByName", name);
+			}
+		} else {
+			pageResult = MybatisPageHelper.findPage(pageRequest, contactorMapper);
+		}
+		return pageResult;
 	}
 	
 }

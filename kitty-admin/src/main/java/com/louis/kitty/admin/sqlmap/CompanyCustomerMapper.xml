@@ -123,5 +123,11 @@
   <select id="findPage" resultMap="BaseResultMap">
     select * from company_customer
   </select>
+
+  <select id="findPageByName" parameterType="java.lang.String" resultMap="BaseResultMap">
+    <bind name="pattern" value="'%' + _parameter.name + '%'" />
+    select * from company_customer
+    where c_name like #{pattern}
+  </select>
   
 </mapper>

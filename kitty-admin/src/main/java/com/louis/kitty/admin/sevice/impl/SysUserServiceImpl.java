@@ -111,7 +111,7 @@ public class SysUserServiceImpl  implements SysUserService {
 	 * @param filterName
 	 * @return
 	 */
-	public String getColumnFilterValue(PageRequest pageRequest, String filterName) {
+	public static String getColumnFilterValue(PageRequest pageRequest, String filterName) {
 		String value = null;
 		ColumnFilter columnFilter = pageRequest.getColumnFilter(filterName);
 		if(columnFilter != null) {
