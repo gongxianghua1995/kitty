@@ -16,5 +16,5 @@ import com.louis.kitty.core.service.CurdService;
  * ---------------------------
  */
 public interface BusinessService extends CurdService<Business> {
-    PageResult findByUserId(PageRequest pageRequest);
+
 }

@@ -68,5 +68,13 @@ public class CompanyCustomerServiceImpl implements CompanyCustomerService {
 		}
 		return pageResult;
 	}
+
+	@Override
+	public PageResult findByUserId(PageRequest pageRequest) {
+		PageResult pageResult = null;
+		Long uid = Long.parseLong(SysUserServiceImpl.getColumnFilterValue(pageRequest, "uid"));
+		pageResult = MybatisPageHelper.findPage(pageRequest, companyCustomerMapper, "findPageByUid", uid);
+		return pageResult;
+	}
 	
 }

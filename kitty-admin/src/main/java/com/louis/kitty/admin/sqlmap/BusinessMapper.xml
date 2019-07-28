@@ -99,10 +99,5 @@
     select * from business
     where bus_name like #{pattern}
   </select>
-
-  <select id="findPageByUid" parameterType="java.lang.Long" resultMap="BaseResultMap">
-    select * from business
-    where u_id = #{uid}
-  </select>
   
 </mapper>

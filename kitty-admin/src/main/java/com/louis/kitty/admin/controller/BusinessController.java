@@ -71,10 +71,4 @@ public class BusinessController {
 	public HttpResult findById(@RequestParam Long id) {
 		return HttpResult.ok(businessService.findById(id));
 	}
-
-	//我的合同
-	@GetMapping(value="/findByUid")
-	public HttpResult findByUid(@RequestBody PageRequest pageRequest) {
-		return HttpResult.ok(businessService.findByUserId(pageRequest));
-	}
 }

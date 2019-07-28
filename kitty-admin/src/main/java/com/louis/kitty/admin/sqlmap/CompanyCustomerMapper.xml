@@ -139,5 +139,10 @@
     select * from company_customer
     where c_name like #{pattern}
   </select>
+
+  <select id="findPageByUid" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select * from company_customer
+    where u_id = #{uid}
+  </select>
   
 </mapper>

@@ -2,6 +2,8 @@ package com.louis.kitty.admin.sevice;
 
 
 import com.louis.kitty.admin.model.CompanyCustomer;
+import com.louis.kitty.core.page.PageRequest;
+import com.louis.kitty.core.page.PageResult;
 import com.louis.kitty.core.service.CurdService;
 
 /**
@@ -14,5 +16,5 @@ import com.louis.kitty.core.service.CurdService;
  * ---------------------------
  */
 public interface CompanyCustomerService extends CurdService<CompanyCustomer> {
-
+    PageResult findByUserId(PageRequest pageRequest);
 }

@@ -76,4 +76,9 @@ public class CompanyCustomerController {
 	public HttpResult findById(@RequestParam Long id) {
 		return HttpResult.ok(companyCustomerService.findById(id));
 	}
+
+	@GetMapping(value="/findByUid")
+	public HttpResult findByUid(@RequestBody PageRequest pageRequest) {
+		return HttpResult.ok(companyCustomerService.findByUserId(pageRequest));
+	}
 }
