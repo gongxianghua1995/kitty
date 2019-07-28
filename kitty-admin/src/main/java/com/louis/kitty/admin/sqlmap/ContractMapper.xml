@@ -3,22 +3,23 @@
 <mapper namespace="com.louis.kitty.admin.dao.ContractMapper">
 
   <resultMap id="BaseResultMap" type="com.louis.kitty.admin.model.Contract">
-	<id column="id" jdbcType="BIGINT" property="id" />
-	<result column="contract_name" jdbcType="VARCHAR" property="contractName" />
-	<result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate" />
-	<result column="gmt_modified" jdbcType="TIMESTAMP" property="gmtModified" />
-	<result column="contract_start_time" jdbcType="TIMESTAMP" property="contractStartTime" />
-	<result column="contract_number" jdbcType="VARCHAR" property="contractNumber" />
-	<result column="customer_name" jdbcType="VARCHAR" property="customerName" />
-	<result column="contract_end_time" jdbcType="TIMESTAMP" property="contractEndTime" />
-	<result column="customer_signatory" jdbcType="VARCHAR" property="customerSignatory" />
-	<result column="contract_amount" jdbcType="FLOAT" property="contractAmount" />
-	<result column="contract_creator" jdbcType="VARCHAR" property="contractCreator" />
-	<result column="order_time" jdbcType="TIMESTAMP" property="orderTime" />
-	<result column="company_signatory" jdbcType="VARCHAR" property="companySignatory" />
-	<result column="contract_status" jdbcType="VARCHAR" property="contractStatus" />
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="contract_name" jdbcType="VARCHAR" property="contractName" />
+    <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate" />
+    <result column="gmt_modified" jdbcType="TIMESTAMP" property="gmtModified" />
+    <result column="contract_start_time" jdbcType="TIMESTAMP" property="contractStartTime" />
+    <result column="contract_number" jdbcType="VARCHAR" property="contractNumber" />
+    <result column="customer_name" jdbcType="VARCHAR" property="customerName" />
+    <result column="contract_end_time" jdbcType="TIMESTAMP" property="contractEndTime" />
+    <result column="customer_signatory" jdbcType="VARCHAR" property="customerSignatory" />
+    <result column="contract_amount" jdbcType="FLOAT" property="contractAmount" />
+    <result column="contract_creator" jdbcType="VARCHAR" property="contractCreator" />
+    <result column="order_time" jdbcType="TIMESTAMP" property="orderTime" />
+    <result column="company_signatory" jdbcType="VARCHAR" property="companySignatory" />
+    <result column="contract_status" jdbcType="VARCHAR" property="contractStatus" />
+    <result column="u_id" jdbcType="INTEGER" property="uId" />
   </resultMap>
-  
+
   <insert id="add" parameterType="com.louis.kitty.admin.model.Contract">
     insert into contract
     <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -64,6 +65,9 @@
       <if test="contractStatus != null">
         contract_status,
       </if>
+      <if test="uId != null">
+        u_id,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -108,6 +112,9 @@
       <if test="contractStatus != null">
         #{contractStatus,jdbcType=VARCHAR},
       </if>
+      <if test="uId != null">
+        #{uId,jdbcType=INTEGER},
+      </if>
     </trim>
   </insert>
 
@@ -115,7 +122,7 @@
     delete from contract
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  
+
   <update id="update" parameterType="com.louis.kitty.admin.model.Contract">
     update contract
     <set>
@@ -161,6 +168,9 @@
       <if test="contractStatus != null">
         contract_status = #{contractStatus,jdbcType=VARCHAR},
       </if>
+      <if test="uId != null">
+        u_id = #{uId,jdbcType=INTEGER},
+      </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
@@ -168,10 +178,6 @@
   <select id="findById" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select * from contract
     where id = #{id,jdbcType=BIGINT}
-  </select>
-  
-  <select id="findPage" resultMap="BaseResultMap">
-    select * from contract
   </select>
 
   <select id="findPageByName" parameterType="java.lang.String" resultMap="BaseResultMap">

@@ -40,6 +40,8 @@ public class Contract {
 	/**  */
 	private String contractStatus;
 
+	private int uId;
+
 	public Long getId() {
 		return id;
 	}
@@ -152,4 +154,11 @@ public class Contract {
 		this.contractStatus = contractStatus;
 	}
 
+	public int getuId() {
+		return uId;
+	}
+
+	public void setuId(int uId) {
+		this.uId = uId;
+	}
 }

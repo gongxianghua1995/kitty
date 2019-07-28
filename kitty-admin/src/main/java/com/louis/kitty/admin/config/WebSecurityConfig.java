@@ -49,6 +49,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             .antMatchers("/contactor/**").permitAll()
 //            // contract
             .antMatchers("/contract/**").permitAll()
+                // clue
+                .antMatchers("/clue/**").permitAll()
+                // business
+                .antMatchers("/business/**").permitAll()
             // web jars
             .antMatchers("/webjars/**").permitAll()
             // 查看SQL监控（druid）

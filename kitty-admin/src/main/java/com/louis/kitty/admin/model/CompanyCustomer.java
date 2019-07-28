@@ -30,6 +30,9 @@ public class CompanyCustomer {
 	/**  */
 	private String cLevel;
 
+	//用户id
+	private int uId;
+
 	public Long getId() {
 		return id;
 	}
@@ -102,4 +105,11 @@ public class CompanyCustomer {
 		this.cLevel = cLevel;
 	}
 
+	public int getuId() {
+		return uId;
+	}
+
+	public void setuId(int uId) {
+		this.uId = uId;
+	}
 }

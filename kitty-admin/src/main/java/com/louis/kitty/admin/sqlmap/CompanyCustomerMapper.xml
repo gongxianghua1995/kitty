@@ -3,17 +3,18 @@
 <mapper namespace="com.louis.kitty.admin.dao.CompanyCustomerMapper">
 
   <resultMap id="BaseResultMap" type="com.louis.kitty.admin.model.CompanyCustomer">
-	<id column="id" jdbcType="BIGINT" property="id" />
-	<result column="c_name" jdbcType="VARCHAR" property="cName" />
-	<result column="c_tel" jdbcType="VARCHAR" property="cTel" />
-	<result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate" />
-	<result column="c_leader" jdbcType="VARCHAR" property="cLeader" />
-	<result column="c_deal_status" jdbcType="VARCHAR" property="cDealStatus" />
-	<result column="gmt_modified" jdbcType="TIMESTAMP" property="gmtModified" />
-	<result column="c_profession" jdbcType="VARCHAR" property="cProfession" />
-	<result column="c_level" jdbcType="VARCHAR" property="cLevel" />
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="c_name" jdbcType="VARCHAR" property="cName" />
+    <result column="c_tel" jdbcType="VARCHAR" property="cTel" />
+    <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate" />
+    <result column="c_leader" jdbcType="VARCHAR" property="cLeader" />
+    <result column="c_deal_status" jdbcType="VARCHAR" property="cDealStatus" />
+    <result column="gmt_modified" jdbcType="TIMESTAMP" property="gmtModified" />
+    <result column="c_profession" jdbcType="VARCHAR" property="cProfession" />
+    <result column="c_level" jdbcType="VARCHAR" property="cLevel" />
+    <result column="u_id" jdbcType="INTEGER" property="uId" />
   </resultMap>
-  
+
   <insert id="add" parameterType="com.louis.kitty.admin.model.CompanyCustomer">
     insert into company_customer
     <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -44,6 +45,9 @@
       <if test="cLevel != null">
         c_level,
       </if>
+      <if test="uId != null">
+        u_id,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -73,6 +77,9 @@
       <if test="cLevel != null">
         #{cLevel,jdbcType=VARCHAR},
       </if>
+      <if test="uId != null">
+        #{uId,jdbcType=INTEGER},
+      </if>
     </trim>
   </insert>
 
@@ -80,7 +87,7 @@
     delete from company_customer
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  
+
   <update id="update" parameterType="com.louis.kitty.admin.model.CompanyCustomer">
     update company_customer
     <set>
@@ -111,6 +118,9 @@
       <if test="cLevel != null">
         c_level = #{cLevel,jdbcType=VARCHAR},
       </if>
+      <if test="uId != null">
+        u_id = #{uId,jdbcType=INTEGER},
+      </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
@@ -119,7 +129,7 @@
     select * from company_customer
     where id = #{id,jdbcType=BIGINT}
   </select>
-  
+
   <select id="findPage" resultMap="BaseResultMap">
     select * from company_customer
   </select>

@@ -36,6 +36,9 @@ public class Contactor {
 	/**  */
 	private String conAddress;
 
+	//客户id
+	private int cusId;
+
 	public Long getId() {
 		return id;
 	}
@@ -132,4 +135,11 @@ public class Contactor {
 		this.conAddress = conAddress;
 	}
 
+	public int getCusId() {
+		return cusId;
+	}
+
+	public void setCusId(int cusId) {
+		this.cusId = cusId;
+	}
 }

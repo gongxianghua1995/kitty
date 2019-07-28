@@ -3,20 +3,21 @@
 <mapper namespace="com.louis.kitty.admin.dao.ContactorMapper">
 
   <resultMap id="BaseResultMap" type="com.louis.kitty.admin.model.Contactor">
-	<id column="id" jdbcType="BIGINT" property="id" />
-	<result column="con_name" jdbcType="VARCHAR" property="conName" />
-	<result column="con_creater" jdbcType="VARCHAR" property="conCreater" />
-	<result column="gmt_modified" jdbcType="TIMESTAMP" property="gmtModified" />
-	<result column="con_mail" jdbcType="VARCHAR" property="conMail" />
-	<result column="con_tel" jdbcType="VARCHAR" property="conTel" />
-	<result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate" />
-	<result column="con_leader" jdbcType="VARCHAR" property="conLeader" />
-	<result column="customer_name" jdbcType="VARCHAR" property="customerName" />
-	<result column="con_job" jdbcType="VARCHAR" property="conJob" />
-	<result column="con_sex" jdbcType="VARCHAR" property="conSex" />
-	<result column="con_address" jdbcType="VARCHAR" property="conAddress" />
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="con_name" jdbcType="VARCHAR" property="conName" />
+    <result column="con_creater" jdbcType="VARCHAR" property="conCreater" />
+    <result column="gmt_modified" jdbcType="TIMESTAMP" property="gmtModified" />
+    <result column="con_mail" jdbcType="VARCHAR" property="conMail" />
+    <result column="con_tel" jdbcType="VARCHAR" property="conTel" />
+    <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate" />
+    <result column="con_leader" jdbcType="VARCHAR" property="conLeader" />
+    <result column="customer_name" jdbcType="VARCHAR" property="customerName" />
+    <result column="con_job" jdbcType="VARCHAR" property="conJob" />
+    <result column="con_sex" jdbcType="VARCHAR" property="conSex" />
+    <result column="con_address" jdbcType="VARCHAR" property="conAddress" />
+    <result column="cus_id" jdbcType="INTEGER" property="cusId" />
   </resultMap>
-  
+
   <insert id="add" parameterType="com.louis.kitty.admin.model.Contactor">
     insert into contactor
     <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -56,6 +57,9 @@
       <if test="conAddress != null">
         con_address,
       </if>
+      <if test="cusId != null">
+        cus_id,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -94,6 +98,9 @@
       <if test="conAddress != null">
         #{conAddress,jdbcType=VARCHAR},
       </if>
+      <if test="cusId != null">
+        #{cusId,jdbcType=INTEGER},
+      </if>
     </trim>
   </insert>
 
@@ -101,7 +108,7 @@
     delete from contactor
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  
+
   <update id="update" parameterType="com.louis.kitty.admin.model.Contactor">
     update contactor
     <set>
@@ -141,6 +148,9 @@
       <if test="conAddress != null">
         con_address = #{conAddress,jdbcType=VARCHAR},
       </if>
+      <if test="cusId != null">
+        cus_id = #{cusId,jdbcType=INTEGER},
+      </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
@@ -149,7 +159,7 @@
     select * from contactor
     where id = #{id,jdbcType=BIGINT}
   </select>
-  
+
   <select id="findPage" resultMap="BaseResultMap">
     select * from contactor
   </select>

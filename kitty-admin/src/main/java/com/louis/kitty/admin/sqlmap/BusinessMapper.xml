@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.louis.kitty.admin.dao.BusinessMapper">
+
+  <resultMap id="BaseResultMap" type="com.louis.kitty.admin.model.Business">
+	<id column="id" jdbcType="INTEGER" property="id" />
+	<result column="cus_id" jdbcType="INTEGER" property="cusId" />
+	<result column="bus_name" jdbcType="VARCHAR" property="busName" />
+	<result column="bus_status" jdbcType="INTEGER" property="busStatus" />
+	<result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate" />
+	<result column="gmt_modify" jdbcType="TIMESTAMP" property="gmtModify" />
+  </resultMap>
+  
+  <insert id="add" parameterType="com.louis.kitty.admin.model.Business">
+    insert into business
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="cusId != null">
+        cus_id,
+      </if>
+      <if test="busName != null">
+        bus_name,
+      </if>
+      <if test="busStatus != null">
+        bus_status,
+      </if>
+      <if test="gmtCreate != null">
+        gmt_create,
+      </if>
+      <if test="gmtModify != null">
+        gmt_modify,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="cusId != null">
+        #{cusId,jdbcType=INTEGER},
+      </if>
+      <if test="busName != null">
+        #{busName,jdbcType=VARCHAR},
+      </if>
+      <if test="busStatus != null">
+        #{busStatus,jdbcType=INTEGER},
+      </if>
+      <if test="gmtCreate != null">
+        #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModify != null">
+        #{gmtModify,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+
+  <delete id="delete" parameterType="java.lang.Integer">
+    delete from business
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  
+  <update id="update" parameterType="com.louis.kitty.admin.model.Business">
+    update business
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="cusId != null">
+        cus_id = #{cusId,jdbcType=INTEGER},
+      </if>
+      <if test="busName != null">
+        bus_name = #{busName,jdbcType=VARCHAR},
+      </if>
+      <if test="busStatus != null">
+        bus_status = #{busStatus,jdbcType=INTEGER},
+      </if>
+      <if test="gmtCreate != null">
+        gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModify != null">
+        gmt_modify = #{gmtModify,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <select id="findById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select * from business
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  
+  <select id="findPage" resultMap="BaseResultMap">
+    select * from business
+  </select>
+  
+</mapper>
