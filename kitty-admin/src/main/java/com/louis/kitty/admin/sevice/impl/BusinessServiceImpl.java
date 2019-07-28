@@ -57,7 +57,16 @@ public class BusinessServiceImpl implements BusinessService {
 
 	@Override
 	public PageResult findPage(PageRequest pageRequest) {
-		return MybatisPageHelper.findPage(pageRequest, businessMapper);
+		PageResult pageResult = null;
+		String name = SysUserServiceImpl.getColumnFilterValue(pageRequest, "name");
+		if(name != null) {
+			if(name != null) {
+				pageResult = MybatisPageHelper.findPage(pageRequest, businessMapper, "findPageByName", name);
+			}
+		} else {
+			pageResult = MybatisPageHelper.findPage(pageRequest, businessMapper);
+		}
+		return pageResult;
 	}
 	
 }
