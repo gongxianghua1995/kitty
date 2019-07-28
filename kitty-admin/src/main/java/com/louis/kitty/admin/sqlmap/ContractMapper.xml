@@ -185,5 +185,10 @@
     select * from contract
     where contract_name like #{pattern}
   </select>
+
+  <select id="findPageByUid" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select * from contract
+    where u_id = #{uid}
+  </select>
   
 </mapper>

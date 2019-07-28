@@ -47,11 +47,13 @@ public interface ContractMapper {
 
     /**
      * 基础分页查询
-     * @param record
+     * @param
      * @return
      */    
     List<Contract> findPage();
 
     List<Contract> findPageByName(@Param(value="name") String name);
+
+    List<Contract> findPageByUid(@Param(value="name") Long uid);
     
 }

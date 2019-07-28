@@ -72,4 +72,10 @@ public class ClueController {
 	public HttpResult findById(@RequestParam Long id) {
 		return HttpResult.ok(clueService.findById(id));
 	}
+
+	//我的合同
+	@GetMapping(value="/findByUid")
+	public HttpResult findByUid(@RequestBody PageRequest pageRequest) {
+		return HttpResult.ok(clueService.findByUserId(pageRequest));
+	}
 }

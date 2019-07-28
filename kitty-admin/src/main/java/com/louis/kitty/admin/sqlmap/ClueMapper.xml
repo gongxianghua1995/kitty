@@ -14,7 +14,7 @@
 	<result column="u_id" jdbcType="INTEGER" property="uId" />
   </resultMap>
   
-  <insert id="add" parameterType="com.louis.output.model.Clue">
+  <insert id="add" parameterType="com.louis.kitty.admin.model.Clue">
     insert into clue
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -81,7 +81,7 @@
     where id = #{id,jdbcType=BIGINT}
   </delete>
   
-  <update id="update" parameterType="com.louis.output.model.Clue">
+  <update id="update" parameterType="com.louis.kitty.admin.model.Clue">
     update clue
     <set>
       <if test="id != null">

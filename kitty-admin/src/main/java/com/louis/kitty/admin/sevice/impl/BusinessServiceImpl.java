@@ -68,5 +68,13 @@ public class BusinessServiceImpl implements BusinessService {
 		}
 		return pageResult;
 	}
+
+	@Override
+	public PageResult findByUserId(PageRequest pageRequest) {
+		PageResult pageResult = null;
+		Long uid = Long.parseLong(SysUserServiceImpl.getColumnFilterValue(pageRequest, "uid"));
+		pageResult = MybatisPageHelper.findPage(pageRequest, businessMapper, "findPageByUid", uid);
+		return pageResult;
+	}
 	
 }

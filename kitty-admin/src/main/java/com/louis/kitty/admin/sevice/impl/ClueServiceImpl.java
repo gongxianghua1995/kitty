@@ -67,5 +67,12 @@ public class ClueServiceImpl implements ClueService {
 		}
 		return pageResult;
 	}
-	
+
+	@Override
+	public PageResult findByUserId(PageRequest pageRequest) {
+		PageResult pageResult = null;
+		Long uid = Long.parseLong(SysUserServiceImpl.getColumnFilterValue(pageRequest, "uid"));
+		pageResult = MybatisPageHelper.findPage(pageRequest, clueMapper, "findPageByUid", uid);
+		return pageResult;
+	}
 }

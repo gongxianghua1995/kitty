@@ -169,5 +169,10 @@
     select * from contactor
     where con_name like #{pattern}
   </select>
+
+  <select id="findPageByUid" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select * from contactor
+    where u_id = #{uid}
+  </select>
   
 </mapper>

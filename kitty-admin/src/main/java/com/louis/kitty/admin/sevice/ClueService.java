@@ -1,6 +1,8 @@
 package com.louis.kitty.admin.sevice;
 
 import com.louis.kitty.admin.model.Clue;
+import com.louis.kitty.core.page.PageRequest;
+import com.louis.kitty.core.page.PageResult;
 import com.louis.kitty.core.service.CurdService;
 
 /**
@@ -13,5 +15,5 @@ import com.louis.kitty.core.service.CurdService;
  * ---------------------------
  */
 public interface ClueService extends CurdService<Clue> {
-
+    PageResult findByUserId(PageRequest pageRequest);
 }

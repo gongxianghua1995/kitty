@@ -96,8 +96,13 @@
 
   <select id="findPageByName" parameterType="java.lang.String" resultMap="BaseResultMap">
     <bind name="pattern" value="'%' + _parameter.name + '%'" />
-    select * from contract
+    select * from business
     where bus_name like #{pattern}
+  </select>
+
+  <select id="findPageByUid" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select * from business
+    where u_id = #{uid}
   </select>
   
 </mapper>
